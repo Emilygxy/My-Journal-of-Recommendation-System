@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "E:\\Anaconda3 Install\\envs\\tensorflow\\python.exe"
+    "python.formatting.provider": "yapf",
+    "python.pythonPath": "E:\\Anaconda3 Install\\envs\\tensorflow\\python"
 }
