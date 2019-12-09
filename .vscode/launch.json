@@ -1,0 +1,123 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python3",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "E:\\Anaconda3 Install\\envs\\tensorflow\\python", //python3的安装路径,
+            //python安装路径E:\\PythonInstall\\python.exe不要带.exe
+            "program": "${file}",
+            "cwd": "${workspaceFolder}",
+            "env": {},
+            "envFile": "${workspaceFolder}/.env",
+        },
+        {
+            "name": "Python: Attach",
+            "type": "python",
+            "request": "attach",
+            "port": 3000,
+            "host": "localhost"
+        },
+        {
+            "name": "Python: Terminal (integrated)",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "E:\\Anaconda3 Install\\envs\\tensorflow\\python",
+            "program": "${file}",
+            "cwd": "",
+            "console": "integratedTerminal",
+            "env": {},
+            "envFile": "${workspaceFolder}/.env",
+        },
+        {
+            "name": "Python: Terminal (external)",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "E:\\Anaconda3 Install\\envs\\tensorflow\\python",
+            "program": "${file}",
+            "cwd": "",
+            "console": "externalTerminal",
+            "env": {},
+            "envFile": "${workspaceFolder}/.env",
+        },
+        {
+            "name": "Python: Django",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": true,
+            "pythonPath": "E:\\Anaconda3 Install\\envs\\tensorflow\\python",
+            "program": "${workspaceFolder}/manage.py",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "runserver",
+                "--noreload",
+                "--nothreading"
+            ],
+            "env": {},
+            "envFile": "${workspaceFolder}/.env",
+        },
+        {
+            "name": "Python: Flask (0.11.x or later)",
+            "type": "python",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "app.py"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ]
+        },
+        {
+            "name": "Python: Module",
+            "type": "python",
+            "request": "launch",
+            "module": "module.name"
+        },
+        {
+            "name": "Python: Pyramid",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "${workspaceFolder}/development.ini"
+            ],
+        },
+        {
+            "name": "Python: Watson",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/console.py",
+            "args": [
+                "dev",
+                "runserver",
+                "--noreload=True"
+            ]
+        },
+        {
+            "name": "Python: All debug Options",
+            "type": "python",
+            "request": "launch",
+            "pythonPath": "${config:python.pythonPath}",
+            "program": "${file}",
+            "module": "module.name",
+            "env": {
+                "VAR1": "1",
+                "VAR2": "2"
+            },
+            "envFile": "${workspaceFolder}/.env",
+            "args": [
+                "arg1",
+                "arg2"
+            ],
+        }
+    ]
+}
