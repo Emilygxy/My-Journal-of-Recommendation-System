@@ -30,13 +30,6 @@ class CBRecommend:
 
     #获取用户对item的喜好程度
     def cosUI(self, user, item):
-        user_profile_array_sh1 = np.array(
-            self.user_profile[str(user)]).shape[0]  #行数
-        item_profile_array_sh1 = np.array(
-            self.item_profile[str(item)]).shape[0]  #列数
-        item_profile_array = np.transpose(
-            np.array(self.item_profile[str(item)]))  #转置
-        print(item_profile_array.shape)
         Uia = sum(
             np.array(self.user_profile[str(user)]) *
             np.array(self.item_profile[str(item)]))  #.reshape(,18)
@@ -81,7 +74,7 @@ class CBRecommend:
                              reverse=True)[:len(have_score_items)]
             rec_items = []
             for one in results:
-                rec_items.append[one[0]]
+                rec_items.append(one[0])
             eva = len(set(rec_items)
                       & set(have_score_items)) / len(have_score_items)
             evas.append(eva)
@@ -92,4 +85,4 @@ if __name__ == "__main__":
     cb = CBRecommend(K=10)
     cb.recommend(1)
     #评估效果
-    print(cb.evaluate())
+    print("评估效果得分为：{}".format(cb.evaluate()))
