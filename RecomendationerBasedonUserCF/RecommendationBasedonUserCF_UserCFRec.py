@@ -88,15 +88,15 @@ class UserCFRec:
                 open(
                     "datasets/RecomendationerBasedonUserCF-movie/user_sim.json",
                     "w"))
-            return userSim
+        return userSim
 
     """
     为用户user进行物品推荐
       user：为用户user进行物品推荐
       k: 选取k个近邻用户
-      nitem: 取nitem个物品
+      nitems: 取nitems个物品
     """
-    def recommend(self, user, k=8, nitem=40):
+    def recommend(self, user, k=8, nitems=40):
         print("开始为用户user进行物品推荐......")
         result = dict()
         have_score_items = self.trainData.get(user, {})
@@ -111,8 +111,28 @@ class UserCFRec:
         return dict(
             sorted(result.items(), key=lambda x: x[1], reverse=True)[0:nitems])
 
+    """
+    计算准确率
+      k: 近邻用户
+      nitem: 推荐的item个数
+    """
+    def precision(self, k=8, nitems=10):
+        print("开始计算准确率......")
+        hit = 0
+        precision = 0
+        for user in self.trainData.keys():
+            tu = self.testData.get(user, {})
+            rank = self.recommend(user, k=k, nitems=nitems)
+            for item, rate in rank.items():
+                if item in tu:
+                    hit += 1
+            precision += nitems
+        return hit / (precision * 1.0)
+
 
 if __name__ == "__main__":
     cf = UserCFRec("datasets\RecomendationerBasedonUserCF-movie/ratings.dat")
     result = cf.recommend("1")
     print("user '1' recommend result is {}".format(result))
+    precision = cf.precision()
+    print("precision is {}".format(precision))
