@@ -90,7 +90,24 @@ class ItemCFRec:
                 result.setdefault(j,0)
                 result[j] += pi*wj
         return dict(sorted(result.items(),key=lambda x:x[1],reverse=True)[0:nitems])
+    
+    #计算准确率
+    def precision(self,k=8,nitems=10):
+        print("开始计算准确率......")
+        hit = 0
+        precesion = 0
+        for user in self.testData.keys():
+            u_items = self.testData.get(user,{})
+            result = self.recommend(user,k=k,nitems=nitems)
+            for item,rate in result.items():
+                if item in u_items:
+                    hit +=1
+            precesion +=nitems
+        return hit/(precesion*1.0)
+
 
 if __name__=="__main__":
     ib = ItemCFRec("datasets/RecomendationerBasedonItemCF-movie/ratings.dat",[1,9])
     print("用户1进行推荐的结果如下：{}".format(ib.recommend("1")))
+
+    print("准确率为：{}".format(ib.precision()))
