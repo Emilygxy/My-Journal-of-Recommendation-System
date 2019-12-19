@@ -46,11 +46,11 @@ class UserCFRec:
     def UserSimilarityBest(self):
         print("开始计算用户之间的相似度......")
         if os.path.exists(
-                "../datasets/RecomendationerBasedonUserCF-movie/user_sim.json"):
+                "datasets/RecomendationerBasedonUserCF-movie/user_sim.json"):
             print("用户相似度从文件加载......")
             userSim = json.load(
                 open(
-                    "../datasets/RecomendationerBasedonUserCF-movie/user_sim.json",
+                    "datasets/RecomendationerBasedonUserCF-movie/user_sim.json",
                     "r"))
         else:
             #得到每个item被哪些user评价过
@@ -86,7 +86,7 @@ class UserCFRec:
             json.dump(
                 userSim,
                 open(
-                    "../datasets/RecomendationerBasedonUserCF-movie/user_sim.json",
+                    "datasets/RecomendationerBasedonUserCF-movie/user_sim.json",
                     "w"))
         return userSim
 
@@ -131,7 +131,7 @@ class UserCFRec:
 
 
 if __name__ == "__main__":
-    cf = UserCFRec("..\datasets\RecomendationerBasedonUserCF-movie/ratings.dat")
+    cf = UserCFRec("datasets/RecomendationerBasedonUserCF-movie/ratings.dat")
     result = cf.recommend("1")
     print("user '1' recommend result is {}".format(result))
     precision = cf.precision()
